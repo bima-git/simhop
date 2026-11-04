@@ -15,9 +15,22 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (auth()->user()->isAdmin())
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
+                            Manajemen Pengguna
+                        </x-nav-link>
+                    @endif
                     @if (auth()->user()->isCoach())
                         <x-nav-link :href="route('coach.projects.index')" :active="request()->routeIs('coach.projects.*')">
                             Proyek
+                        </x-nav-link>
+                        <x-nav-link :href="route('coach.videos.index')" :active="request()->routeIs('coach.videos.*')">
+                            Review Video
+                        </x-nav-link>
+                    @endif
+                    @if (auth()->user()->isMahasiswa())
+                        <x-nav-link :href="route('mahasiswa.tasks.index')" :active="request()->routeIs('mahasiswa.tasks.*')">
+                            Tugas Saya
                         </x-nav-link>
                     @endif
                 </div>
@@ -75,6 +88,24 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if (auth()->user()->isAdmin())
+                <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
+                    Manajemen Pengguna
+                </x-responsive-nav-link>
+            @endif
+            @if (auth()->user()->isCoach())
+                <x-responsive-nav-link :href="route('coach.projects.index')" :active="request()->routeIs('coach.projects.*')">
+                    Proyek
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('coach.videos.index')" :active="request()->routeIs('coach.videos.*')">
+                    Review Video
+                </x-responsive-nav-link>
+            @endif
+            @if (auth()->user()->isMahasiswa())
+                <x-responsive-nav-link :href="route('mahasiswa.tasks.index')" :active="request()->routeIs('mahasiswa.tasks.*')">
+                    Tugas Saya
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

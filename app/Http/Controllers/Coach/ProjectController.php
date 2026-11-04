@@ -42,7 +42,7 @@ class ProjectController extends Controller
     {
         $this->ensureOwner($project);
 
-        $project->load('members');
+        $project->load(['members', 'tasks.assignee', 'tasks.videoSubmissions']);
 
         // Mahasiswa aktif yang belum menjadi anggota proyek ini
         $students = User::where('role', User::ROLE_MAHASISWA)
@@ -51,7 +51,12 @@ class ProjectController extends Controller
             ->orderBy('name')
             ->get();
 
-        return view('coach.projects.show', compact('project', 'students'));
+        // Mahasiswa aktif yang sudah menjadi anggota proyek ini (pilihan penerima tugas)
+        $memberStudents = $project->members
+            ->where('role', User::ROLE_MAHASISWA)
+            ->where('is_active', true);
+
+        return view('coach.projects.show', compact('project', 'students', 'memberStudents'));
     }
 
     public function addMember(Request $request, Project $project)
