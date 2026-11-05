@@ -137,34 +137,34 @@ Legenda: [x] selesai dan diuji pemilik · [~] kode ada tetapi belum dikonfirmasi
 - [ ] Pengisian data pengujian riil di lapangan dan kuesioner pengguna [DIKERJAKAN OLEH PENULIS]
 **Status**: Draf instrumen dan tabel pengujian telah lengkap, siap diisi hasil nyata oleh penulis. [4 Nov 2026]
 
-## T-12 — Redesain UI/UX & Design System SIMHOP (selesai)
-**Tujuan**: Implementasi Design System profesional SIMHOP (Biru Teknologi Server `blue-600` & `slate`, tanpa template Breeze generik, anti-emoji dengan Heroicons, kontras tajam light mode).
-- [x] **Tahap A (Fondasi UI & Komponen Standar)**:
+## T-12 — Redesain UI/UX & Design System SIMHOP (DALAM PROSES: sweep kontras Batch 1 selesai; Batch 2-3 menunggu; verifikasi visual di browser oleh pemilik belum dilakukan)
+**Tujuan**: Implementasi Design System profesional SIMHOP (Biru SIMHOP `blue-600` & `slate`, tanpa template Breeze generik, konsisten dengan Heroicons SVG inline).
+- [ ] **Tahap A (Fondasi UI & Komponen Standar)**:
   - Komponen Blade: `<x-status-badge>`, `<x-stat-card>`, `<x-card>`, `<x-application-logo>`, `<x-primary-button>`, `<x-nav-link>`, `<x-responsive-nav-link>`.
-  - Halaman login (`auth/login.blade.php`, `layouts/guest.blade.php`) dengan identitas tipografi SIMHOP, subjudul studi kasus PT Xcode Indonesia, dan footer Tugas Akhir PNC.
+  - Halaman login (`auth/login.blade.php`, `layouts/guest.blade.php`) dengan identitas tipografi SIMHOP, subjudul studi kasus PT Teknologi Server Indonesia, dan footer Tugas Akhir PNC.
   - Master layout (`layouts/navigation.blade.php` & `layouts/app.blade.php`) dengan kanvas `bg-slate-50`, navbar bersih ber-badge role, dan flash message elegan.
-- [x] **Tahap B (Alur Inti Sistem)**:
+- [ ] **Tahap B (Alur Inti Sistem)**:
   - Detail Proyek Coach (`coach/projects/show.blade.php`): layout 2 kolom, anggota tim mahasiswa ber-avatar, dan tabel tugas/handover.
   - Review Video Coach (`coach/videos/show.blade.php`): responsive 16:9 embedded player, linimasa vertikal catatan revisi dengan node amber, tombol approve hijau & form revisi oranye.
   - Detail Tugas Mahasiswa (`mahasiswa/tasks/show.blade.php`): progress bar visual, kartu dokumen handover dengan download, panel status review video & form resubmit.
-- [x] **Tahap C (Dasbor & Manajemen Pengguna Admin)**:
+- [ ] **Tahap C (Dasbor & Manajemen Pengguna Admin)**:
   - Dasbor Coach (`coach/dashboard.blade.php`): stat cards metrik dan antrean video `pending` diutamakan di posisi atas dengan aksi cepat "Review Sekarang →".
   - Dasbor Mahasiswa (`mahasiswa/dashboard.blade.php`): stat cards video, daftar tugas aktif dengan indikator deadline (terlewat/hari ini), akses cepat dokumen handover.
   - Dasbor Admin (`admin/dashboard.blade.php`): ringkasan pengguna per role (`<x-stat-card>`), tabel 5 pengguna terbaru ber-`font-mono` untuk NIM/email dan `<x-status-badge>`.
   - Manajemen Pengguna (`admin/users/index.blade.php`, `create.blade.php`, `edit.blade.php`): filter role tab interaktif, search bar, toggle aktif/nonaktif akun terstandar, form create/edit rapi.
-- [x] **Tahap D (Modul Handover, Daftar Proyek/Tugas, & Profil)**:
+- [ ] **Tahap D (Modul Handover, Daftar Proyek/Tugas, & Profil)**:
   - Modul Handover (`coach/handover/index.blade.php`, `create.blade.php`, `edit.blade.php`, `mahasiswa/projects/show.blade.php`): pengelompokan tipe dokumen, blok kode teknis `font-mono`, ukuran berkas (KB), dan unduh file lampiran.
   - Daftar Proyek Coach (`coach/projects/index.blade.php`, `create.blade.php`): tabel proyek bimbingan ber-badge status dan form inisiasi proyek.
   - Daftar Tugas Mahasiswa (`mahasiswa/tasks/index.blade.php`): tabel tugas ber-progress bar visual, indikator tenggat waktu, dan tombol aksi detail.
   - Halaman Profil (`profile/edit.blade.php`, `update-profile-information-form.blade.php`, `update-password-form.blade.php`): kartu profil ber-badge peran & status, form kata sandi, dan kartu penjelasan kebijakan akun terpusat BR-07.
-- [x] **Identitas Visual Resmi (The S-Hop Monogram - Konsep 2)**:
+- [ ] **Identitas Visual Resmi (The S-Hop Monogram - Konsep 2)**:
   - Vector Monogram SVG di `resources/views/components/application-logo.blade.php` dengan 3 bilah diagonal isometric, panah "Hop", tombol Play video (▶) negatif di kepala panah, serta tipografi SIMHOP & sub-label Monitoring & Handover.
   - Favicon resmi `public/favicon.svg` di atas kanvas persegi gelap (`#0F172A`, `rx="10"`).
   - Tautan favicon terpasang di `<head>` master layouts (`layouts/app.blade.php` & `layouts/guest.blade.php`).
-- [x] **Verifikasi Akhir**:
+- [ ] **Verifikasi Akhir**:
   - `php artisan test`: seluruh **143 tests passed (497 assertions)**.
   - `npm run build`: Vite build sukses mengompilasi CSS dan JS tanpa error.
-**Selesai bila**: seluruh tampilan konsisten dengan design system, bebas emoji generik, dan seluruh tes otomatis tetap hijau. [SELESAI - 4 Nov 2026]
+**Status saat ini**: DALAM PROSES: sweep kontras Batch 1 selesai; Batch 2-3 menunggu; verifikasi visual di browser oleh pemilik belum dilakukan. [5 Nov 2026]
 
 ---
 

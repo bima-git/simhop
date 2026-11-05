@@ -5,7 +5,7 @@
                 <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
                     Dashboard Coach
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
                     Monitoring kemajuan proyek magang, tugas mahasiswa, dan review video dokumentasi.
                 </p>
             </div>
@@ -100,7 +100,7 @@
 
                 <div class="overflow-x-auto -mx-5 -my-5 sm:-mx-6 sm:-my-6">
                     <table class="min-w-full divide-y divide-slate-100 dark:divide-slate-700/60 text-left text-sm">
-                        <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                             <tr>
                                 <th class="py-3 px-4">Judul Video</th>
                                 <th class="py-3 px-4">Mahasiswa</th>
@@ -114,19 +114,19 @@
                                 <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition">
                                     <td class="py-3.5 px-4 font-medium text-slate-900 dark:text-white">
                                         <div class="font-semibold">{{ $video->title }}</div>
-                                        <p class="text-xs text-slate-400 font-normal mt-0.5">
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 font-normal mt-0.5">
                                             Platform: <span class="capitalize">{{ str_replace('_', ' ', $video->platform?->value ?? '-') }}</span>
                                         </p>
                                     </td>
                                     <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300">
                                         <div class="font-semibold text-slate-900 dark:text-white">{{ $video->user ? $video->user->name : '-' }}</div>
-                                        <div class="text-slate-400 font-mono">{{ $video->user ? ($video->user->nim ?? $video->user->email) : '' }}</div>
+                                        <div class="text-slate-600 dark:text-slate-400 font-mono">{{ $video->user ? ($video->user->nim ?? $video->user->email) : '' }}</div>
                                     </td>
                                     <td class="py-3.5 px-4 text-xs text-slate-600 dark:text-slate-300">
                                         <div class="font-medium text-slate-800 dark:text-slate-200">{{ $video->task ? $video->task->title : '-' }}</div>
-                                        <div class="text-slate-400 text-[11px]">{{ $video->task && $video->task->project ? $video->task->project->name : '-' }}</div>
+                                        <div class="text-slate-600 dark:text-slate-400 text-[11px]">{{ $video->task && $video->task->project ? $video->task->project->name : '-' }}</div>
                                     </td>
-                                    <td class="py-3.5 px-4 text-slate-500 dark:text-slate-400 text-xs whitespace-nowrap">
+                                    <td class="py-3.5 px-4 text-slate-600 dark:text-slate-400 text-xs whitespace-nowrap">
                                         {{ $video->created_at->format('d M Y H:i') }} WIB
                                     </td>
                                     <td class="py-3.5 px-4 text-right whitespace-nowrap">
@@ -142,7 +142,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="py-8 text-center text-xs text-slate-400">
+                                    <td colspan="5" class="py-8 text-center text-xs text-slate-600 dark:text-slate-400">
                                         <div class="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -185,7 +185,7 @@
                                         {{ $project->name }}
                                     </a>
                                 </h4>
-                                <p class="mt-2 text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed min-h-[2.5rem]">
+                                <p class="mt-2 text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed min-h-[2.5rem]">
                                     {{ $project->description ?: 'Belum ada deskripsi proyek.' }}
                                 </p>
                             </div>
@@ -193,13 +193,13 @@
                             <div class="mt-5 pt-3.5 border-t border-slate-200/80 dark:border-slate-700/60 flex flex-wrap items-center justify-between gap-3 text-xs">
                                 <div class="flex items-center gap-2">
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 font-medium text-[11px]">
-                                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.765l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                                         </svg>
                                         {{ $project->members_count }} Mahasiswa
                                     </span>
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 font-medium text-[11px]">
-                                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
                                         </svg>
                                         {{ $project->tasks_count }} Tugas
@@ -214,7 +214,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="col-span-2 py-8 text-center text-xs text-slate-400">
+                        <div class="col-span-2 py-8 text-center text-xs text-slate-600 dark:text-slate-400">
                             Belum ada proyek yang dibuat. Silakan klik tombol "+ Buat Proyek" di atas untuk memulai.
                         </div>
                     @endforelse

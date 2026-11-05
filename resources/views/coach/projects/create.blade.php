@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center gap-3">
             <a href="{{ route('coach.projects.index') }}"
-               class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition">
+               class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 transition">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
@@ -11,7 +11,7 @@
                 <h2 class="text-xl font-bold leading-tight text-slate-900 dark:text-slate-100">
                     Proyek Baru
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                     Buat inisiasi proyek bimbingan magang baru
                 </p>
             </div>
@@ -37,7 +37,7 @@
                     <div>
                         <x-input-label for="description" value="Deskripsi Proyek" />
                         <textarea id="description" name="description" rows="4"
-                                  class="mt-1 block w-full rounded-lg border-slate-300 shadow-xs text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
+                                  class="mt-1 block w-full rounded-lg border-slate-300 shadow-sm text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400"
                                   placeholder="Jelaskan ruang lingkup, latar belakang, dan target proyek magang ini...">{{ old('description') }}</textarea>
                         <x-input-error :messages="$errors->get('description')" class="mt-1.5" />
                     </div>

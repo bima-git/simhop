@@ -27,7 +27,7 @@
                     <x-application-logo size="lg" class="justify-center" />
                 </a>
                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-3 font-medium">
-                    Portal Monitoring & Handover Proyek Magang &bull; Studi Kasus PT Xcode Indonesia
+                    Portal Monitoring & Handover Proyek Magang &bull; Studi Kasus PT Teknologi Server Indonesia
                 </p>
             </div>
 

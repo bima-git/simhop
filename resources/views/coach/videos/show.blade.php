@@ -8,7 +8,7 @@
                     </h2>
                     <x-status-badge :status="$video->status" />
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
                     <span>Tugas: <strong class="text-slate-700 dark:text-slate-300">{{ $video->task?->title }}</strong></span>
                     <span>&bull;</span>
                     <span>Mahasiswa: <strong class="text-slate-700 dark:text-slate-300">{{ $video->user?->name }}</strong></span>
@@ -39,7 +39,7 @@
                         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-slate-100 dark:border-slate-700/60 pb-4">
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900 dark:text-white">{{ $video->title }}</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
                                     <span>Platform: <strong class="capitalize font-semibold text-slate-700 dark:text-slate-300">{{ str_replace('_', ' ', $video->platform?->value ?? '-') }}</strong></span>
                                     <span>&bull;</span>
                                     <span>Dikirim: {{ $video->created_at->format('d M Y H:i') }} WIB</span>
@@ -56,7 +56,7 @@
 
                         @if ($video->description)
                             <div class="mt-4 bg-slate-50 dark:bg-slate-800/60 rounded-lg p-4 border border-slate-200/80 dark:border-slate-700/50">
-                                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">Catatan dari Mahasiswa:</span>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-1">Catatan dari Mahasiswa:</span>
                                 <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
                                     {{ $video->description }}
                                 </p>
@@ -92,12 +92,12 @@
                             </div>
                         @else
                             <div class="text-center py-6">
-                                <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700/60 text-slate-400 flex items-center justify-center mx-auto mb-2">
+                                <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700/60 text-slate-400 dark:text-slate-500 flex items-center justify-center mx-auto mb-2" aria-hidden="true">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg>
                                 </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">
+                                <p class="text-xs text-slate-600 dark:text-slate-400">
                                     Belum ada catatan revisi pada video ini.
                                 </p>
                             </div>
@@ -111,11 +111,11 @@
                     <x-card title="Informasi Tugas">
                         <dl class="divide-y divide-slate-100 dark:divide-slate-700/60 text-xs">
                             <div class="py-2.5">
-                                <dt class="text-slate-400 font-medium">Judul Tugas</dt>
+                                <dt class="text-slate-600 dark:text-slate-400 font-medium">Judul Tugas</dt>
                                 <dd class="text-sm font-semibold text-slate-900 dark:text-white mt-0.5">{{ $video->task?->title }}</dd>
                             </div>
                             <div class="py-2.5">
-                                <dt class="text-slate-400 font-medium">Proyek Magang</dt>
+                                <dt class="text-slate-600 dark:text-slate-400 font-medium">Proyek Magang</dt>
                                 <dd class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-0.5">
                                     <a href="{{ route('coach.projects.show', $video->task->project) }}" class="hover:underline">
                                         {{ $video->task?->project?->name }}
@@ -123,18 +123,18 @@
                                 </dd>
                             </div>
                             <div class="py-2.5">
-                                <dt class="text-slate-400 font-medium">Mahasiswa Pembuat</dt>
+                                <dt class="text-slate-600 dark:text-slate-400 font-medium">Mahasiswa Pembuat</dt>
                                 <dd class="text-sm font-semibold text-slate-900 dark:text-white mt-0.5">{{ $video->user?->name }}</dd>
-                                <dd class="text-slate-500 font-mono">{{ $video->user?->nim ?? $video->user?->email }}</dd>
+                                <dd class="text-slate-600 dark:text-slate-400 font-mono">{{ $video->user?->nim ?? $video->user?->email }}</dd>
                             </div>
                             <div class="py-2.5">
-                                <dt class="text-slate-400 font-medium">Tenggat Waktu</dt>
+                                <dt class="text-slate-600 dark:text-slate-400 font-medium">Tenggat Waktu</dt>
                                 <dd class="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-0.5">
                                     {{ $video->task?->due_date ? $video->task->due_date->format('d M Y') : 'Tidak ada tenggat' }}
                                 </dd>
                             </div>
                             <div class="py-2.5">
-                                <dt class="text-slate-400 font-medium">Status Tugas Saat Ini</dt>
+                                <dt class="text-slate-600 dark:text-slate-400 font-medium">Status Tugas Saat Ini</dt>
                                 <dd class="mt-1 flex items-center gap-2">
                                     <x-status-badge :status="$video->task?->status" />
                                     <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">({{ $video->task?->progress }}%)</span>
@@ -201,7 +201,7 @@
                                         <div>
                                             <x-input-label for="note" value="Catatan Revisi" class="text-xs font-semibold text-amber-900 dark:text-amber-200" />
                                             <textarea id="note" name="note" rows="4"
-                                                      class="mt-1 block w-full rounded-lg border-amber-300 dark:border-amber-700 dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 shadow-xs focus:border-amber-500 focus:ring-amber-500"
+                                                      class="mt-1 block w-full rounded-lg border-amber-300 dark:border-amber-700 dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                                       placeholder="Contoh: Suara video kurang jelas pada menit ke-2. Mohon demokan juga bagian validasi input..." required>{{ old('note') }}</textarea>
                                             <x-input-error :messages="$errors->get('note')" class="mt-1" />
                                         </div>

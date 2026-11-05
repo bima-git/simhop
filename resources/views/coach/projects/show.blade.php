@@ -8,7 +8,7 @@
                     </h2>
                     <x-status-badge :status="$project->status" />
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
                     <span>Dibuat oleh Anda</span>
                     <span>&bull;</span>
                     @if ($project->start_date)
@@ -38,7 +38,7 @@
             <!-- Project Overview Card -->
             <x-card>
                 <div class="space-y-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block">Deskripsi Proyek</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 block">Deskripsi Proyek</span>
                     <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                         {{ $project->description ?: 'Belum ada deskripsi spesifik untuk proyek ini.' }}
                     </p>
@@ -60,7 +60,7 @@
                                             <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">
                                                 {{ $member->name }}
                                             </p>
-                                            <p class="text-xs text-slate-500 truncate">
+                                            <p class="text-xs text-slate-600 dark:text-slate-400 truncate">
                                                 {{ $member->nim ? 'NIM: ' . $member->nim : $member->email }}
                                             </p>
                                         </div>
@@ -74,7 +74,7 @@
                                     </form>
                                 </li>
                             @empty
-                                <li class="py-4 text-center text-xs text-slate-400">
+                                <li class="py-4 text-center text-xs text-slate-600 dark:text-slate-400">
                                     Belum ada mahasiswa dalam proyek ini.
                                 </li>
                             @endforelse
@@ -99,7 +99,7 @@
                                     </x-primary-button>
                                 </form>
                             @else
-                                <p class="text-xs text-slate-400 text-center py-2">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 text-center py-2">
                                     Semua mahasiswa aktif telah terdaftar pada proyek ini.
                                 </p>
                             @endif
@@ -112,7 +112,7 @@
                     <x-card title="Daftar Tugas Proyek" subtitle="{{ $project->tasks->count() }} tugas dibuat">
                         <div class="overflow-x-auto -mx-5 -my-5 sm:-mx-6 sm:-my-6">
                             <table class="min-w-full divide-y divide-slate-100 dark:divide-slate-700/60 text-left text-sm">
-                                <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                                <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                                     <tr>
                                         <th class="py-3 px-4">Tugas</th>
                                         <th class="py-3 px-4">Penerima</th>
@@ -130,7 +130,7 @@
                                                     {{ $task->title }}
                                                 </div>
                                                 @if ($task->description)
-                                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
+                                                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 line-clamp-1">
                                                         {{ $task->description }}
                                                     </p>
                                                 @endif
@@ -177,7 +177,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="6" class="py-8 text-center text-xs text-slate-400">
+                                            <td colspan="6" class="py-8 text-center text-xs text-slate-600 dark:text-slate-400">
                                                 Belum ada tugas pada proyek ini. Buat tugas baru melalui formulir di bawah.
                                             </td>
                                         </tr>
@@ -193,7 +193,7 @@
                             @csrf
                             <div>
                                 <x-input-label for="title" value="Judul Tugas" class="text-xs font-semibold" />
-                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                               :value="old('title')" placeholder="Misal: Implementasi Autentikasi dan Middleware" required />
                                 <x-input-error :messages="$errors->get('title')" class="mt-1.5" />
                             </div>
@@ -201,21 +201,21 @@
                             <div>
                                 <x-input-label for="description" value="Deskripsi Tugas" class="text-xs font-semibold" />
                                 <textarea id="description" name="description" rows="3"
-                                          class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 dark:bg-slate-900 shadow-xs focus:border-blue-500 focus:ring-blue-500" placeholder="Jelaskan kebutuhan teknis, batasan, dan kriteria tugas ini...">{{ old('description') }}</textarea>
+                                          class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 dark:bg-slate-900 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Jelaskan kebutuhan teknis, batasan, dan kriteria tugas ini...">{{ old('description') }}</textarea>
                                 <x-input-error :messages="$errors->get('description')" class="mt-1.5" />
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <x-input-label for="due_date" value="Tenggat Waktu" class="text-xs font-semibold" />
-                                    <x-text-input id="due_date" name="due_date" type="date" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                    <x-text-input id="due_date" name="due_date" type="date" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:[color-scheme:dark]"
                                                   :value="old('due_date')" />
                                     <x-input-error :messages="$errors->get('due_date')" class="mt-1.5" />
                                 </div>
                                 <div>
                                     <x-input-label for="assigned_to" value="Tugaskan Kepada" class="text-xs font-semibold" />
                                     <select id="assigned_to" name="assigned_to"
-                                            class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 dark:bg-slate-900 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                                            class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                         <option value="">-- Belum Ditugaskan --</option>
                                         @foreach ($memberStudents as $ms)
                                             <option value="{{ $ms->id }}" @selected(old('assigned_to') == $ms->id)>

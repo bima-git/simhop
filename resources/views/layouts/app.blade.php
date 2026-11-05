@@ -66,7 +66,7 @@
 
             <!-- Subtle Page Footer -->
             <footer class="mt-auto py-6 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-600 dark:text-slate-400">
-                SIMHOP &bull; Sistem Informasi Monitoring & Handover Proyek Magang &bull; PT Xcode Indonesia
+                SIMHOP &bull; Sistem Informasi Monitoring & Handover Proyek Magang &bull; PT Teknologi Server Indonesia
             </footer>
         </div>
     </body>

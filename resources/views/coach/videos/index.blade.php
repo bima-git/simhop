@@ -37,11 +37,11 @@
             </div>
 
             <!-- Tabel Antrean Video -->
-            <div class="rounded-xl border border-slate-200/80 bg-white p-6 shadow-xs dark:border-slate-700/80 dark:bg-slate-800 dark:text-slate-100">
+            <div class="rounded-xl border border-slate-200/80 bg-white p-6 shadow-sm dark:border-slate-700/80 dark:bg-slate-800 dark:text-slate-100">
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-700">
                         <thead>
-                            <tr class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            <tr class="text-xs uppercase tracking-wider text-slate-600 dark:text-slate-400">
                                 <th class="py-3 px-4">Judul Video</th>
                                 <th class="py-3 px-4">Mahasiswa</th>
                                 <th class="py-3 px-4">Tugas / Proyek</th>
@@ -57,16 +57,16 @@
                                     <td class="py-3 px-4 font-medium text-slate-900 dark:text-slate-100">
                                         {{ $video->title }}
                                         @if ($video->description)
-                                            <p class="text-xs text-slate-500 dark:text-slate-400 font-normal mt-0.5 line-clamp-1">{{ $video->description }}</p>
+                                            <p class="text-xs text-slate-600 dark:text-slate-400 font-normal mt-0.5 line-clamp-1">{{ $video->description }}</p>
                                         @endif
                                     </td>
                                     <td class="py-3 px-4 text-slate-600 dark:text-slate-300">
                                         <p class="font-medium text-slate-900 dark:text-slate-100">{{ $video->user ? $video->user->name : '-' }}</p>
-                                        <p class="text-xs text-slate-500 dark:text-slate-400">{{ $video->user ? ($video->user->nim ?? $video->user->email) : '' }}</p>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400 font-mono">{{ $video->user ? ($video->user->nim ?? $video->user->email) : '' }}</p>
                                     </td>
                                     <td class="py-3 px-4 text-slate-600 dark:text-slate-300">
                                         <p class="font-medium text-slate-900 dark:text-slate-100">{{ $video->task ? $video->task->title : '-' }}</p>
-                                        <p class="text-xs text-slate-500 dark:text-slate-400">{{ $video->task && $video->task->project ? $video->task->project->name : '-' }}</p>
+                                        <p class="text-xs text-slate-600 dark:text-slate-400">{{ $video->task && $video->task->project ? $video->task->project->name : '-' }}</p>
                                     </td>
                                     <td class="py-3 px-4 text-slate-600 dark:text-slate-300 capitalize text-xs">
                                         {{ str_replace('_', ' ', $video->platform?->value ?? '-') }}
@@ -79,14 +79,14 @@
                                     </td>
                                     <td class="py-3 px-4 text-right">
                                         <a href="{{ route('coach.videos.show', $video) }}"
-                                           class="inline-flex items-center rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                                           class="inline-flex items-center rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition">
                                             Review Video →
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="py-8 px-4 text-center text-slate-500 dark:text-slate-400">
+                                    <td colspan="7" class="py-8 px-4 text-center text-slate-600 dark:text-slate-400">
                                         @if ($status === 'pending')
                                             Tidak ada video yang sedang menunggu review saat ini.
                                         @else
