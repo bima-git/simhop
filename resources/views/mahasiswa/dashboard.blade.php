@@ -5,12 +5,12 @@
                 <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
                     Dashboard Mahasiswa
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
                     Pantau tugas aktif, dokumentasi handover proyek, dan status review video Anda.
                 </p>
             </div>
             <div>
-                <a href="{{ route('mahasiswa.tasks.index') }}" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-xs transition">
+                <a href="{{ route('mahasiswa.tasks.index') }}" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
@@ -74,7 +74,7 @@
 
                 <div class="overflow-x-auto -mx-5 -my-5 sm:-mx-6 sm:-my-6">
                     <table class="min-w-full divide-y divide-slate-100 dark:divide-slate-700/60 text-left text-sm">
-                        <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        <thead class="bg-slate-50 dark:bg-slate-800/60 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                             <tr>
                                 <th class="py-3 px-4">Judul Tugas</th>
                                 <th class="py-3 px-4">Proyek</th>
@@ -113,7 +113,7 @@
                                                 <span class="text-slate-600 dark:text-slate-300">{{ $task->due_date->format('d M Y') }}</span>
                                             @endif
                                         @else
-                                            <span class="text-slate-400">-</span>
+                                            <span class="text-slate-600 dark:text-slate-400">-</span>
                                         @endif
                                     </td>
                                     <td class="py-3.5 px-4 whitespace-nowrap">
@@ -135,7 +135,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="py-8 text-center text-xs text-slate-400">
+                                    <td colspan="6" class="py-8 text-center text-xs text-slate-600 dark:text-slate-400">
                                         Tidak ada tugas aktif yang perlu dikerjakan saat ini.
                                     </td>
                                 </tr>
@@ -159,7 +159,7 @@
                                     </h4>
                                     <x-status-badge :status="$project->status" />
                                 </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
                                     Coach: <strong class="text-slate-700 dark:text-slate-300">{{ $project->creator ? $project->creator->name : '-' }}</strong>
                                 </p>
                                 <p class="mt-2 text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
@@ -180,7 +180,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="col-span-2 py-8 text-center text-xs text-slate-400">
+                        <div class="col-span-2 py-8 text-center text-xs text-slate-600 dark:text-slate-400">
                             Anda belum terdaftar pada proyek magang apa pun.
                         </div>
                     @endforelse

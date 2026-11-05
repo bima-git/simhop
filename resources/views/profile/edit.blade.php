@@ -5,7 +5,7 @@
                 <h2 class="text-xl font-bold leading-tight text-slate-900 dark:text-slate-100">
                     Profil Pengguna
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                     Kelola informasi akun pribadi, kredensial masuk, dan preferensi keamanan
                 </p>
             </div>

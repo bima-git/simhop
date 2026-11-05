@@ -8,7 +8,7 @@
                     </h2>
                     <x-status-badge :status="$task->status" />
                 </div>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 flex items-center gap-2">
                     <span>Proyek: <strong class="text-slate-700 dark:text-slate-300">{{ $task->project ? $task->project->name : 'Proyek' }}</strong></span>
                     <span>&bull;</span>
                     <span>Coach: <strong class="text-slate-700 dark:text-slate-300">{{ $task->project && $task->project->creator ? $task->project->creator->name : '-' }}</strong></span>
@@ -109,7 +109,7 @@
 
                         <div>
                             <x-input-label for="progress_note" value="Catatan Progres (Opsional)" class="text-xs font-semibold" />
-                            <textarea id="progress_note" name="progress_note" rows="3" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                            <textarea id="progress_note" name="progress_note" rows="3" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                       placeholder="Contoh: Sudah menyelesaikan implementasi rute dan pengujian database seeder...">{{ old('progress_note', $task->progress_note) }}</textarea>
                             <x-input-error :messages="$errors->get('progress_note')" class="mt-1.5" />
                         </div>
@@ -307,7 +307,7 @@
                                         <div>
                                             <x-input-label for="resubmit_description" value="Deskripsi / Catatan Perbaikan (Opsional)" class="text-xs font-semibold" />
                                             <textarea id="resubmit_description" name="description" rows="3"
-                                                      class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                                      class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                                       placeholder="Jelaskan secara ringkas bagian mana yang telah Anda perbaiki sesuai arahan Coach...">{{ old('description', $video->description) }}</textarea>
                                             <x-input-error :messages="$errors->get('description')" class="mt-1.5" />
                                         </div>
@@ -357,7 +357,7 @@
                                 <div>
                                     <x-input-label for="create_description" value="Deskripsi / Catatan Video (Opsional)" class="text-xs font-semibold" />
                                     <textarea id="create_description" name="description" rows="3"
-                                              class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                              class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                               placeholder="Jelaskan secara singkat fitur dan demonstrasi yang ada dalam video ini...">{{ old('description') }}</textarea>
                                     <x-input-error :messages="$errors->get('description')" class="mt-1.5" />
                                 </div>

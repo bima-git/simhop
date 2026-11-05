@@ -38,14 +38,14 @@
     {{ $attributes->merge(['class' => 'bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/80 p-5 shadow-sm transition-all flex items-start justify-between gap-4 ' . ($href ? 'hover:shadow-md cursor-pointer ' . $colorClasses['border'] : '')]) }}
 >
     <div class="flex-1">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-1">
             {{ $title }}
         </span>
         <div class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             {{ $value }}
         </div>
         @if($description)
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 flex items-center gap-1">
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 flex items-center gap-1">
                 {{ $description }}
             </p>
         @endif

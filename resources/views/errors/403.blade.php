@@ -31,12 +31,12 @@
             {{ $exception->getMessage() ?: 'Anda tidak memiliki hak akses atau izin yang sesuai untuk membuka halaman ini.' }}
         </p>
 
-        <div class="bg-slate-50 dark:bg-slate-800/60 rounded-lg p-3 text-xs text-slate-500 dark:text-slate-400 mb-6 border border-slate-200 dark:border-slate-700">
+        <div class="bg-slate-50 dark:bg-slate-800/60 rounded-lg p-3 text-xs text-slate-600 dark:text-slate-400 mb-6 border border-slate-200 dark:border-slate-700">
             Akses dibatasi berdasarkan hak peran (Admin, Coach, Mahasiswa) atau kepemilikan proyek/tugas pada sistem SIMHOP.
         </div>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow">
+            <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>

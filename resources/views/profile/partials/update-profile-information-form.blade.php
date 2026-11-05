@@ -1,19 +1,19 @@
 <section>
     <div class="mb-5 flex flex-wrap items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-xs">
         <div class="flex items-center gap-1.5">
-            <span class="text-slate-500 dark:text-slate-400">Peran:</span>
+            <span class="text-slate-600 dark:text-slate-400">Peran:</span>
             <x-status-badge :status="$user->role" />
         </div>
         @if ($user->nim)
             <span class="text-slate-300 dark:text-slate-600">&bull;</span>
             <div class="flex items-center gap-1.5 font-mono">
-                <span class="text-slate-500 dark:text-slate-400">NIM:</span>
+                <span class="text-slate-600 dark:text-slate-400">NIM:</span>
                 <span class="font-semibold text-slate-800 dark:text-slate-200">{{ $user->nim }}</span>
             </div>
         @endif
         <span class="text-slate-300 dark:text-slate-600">&bull;</span>
         <div class="flex items-center gap-1.5">
-            <span class="text-slate-500 dark:text-slate-400">Status Akun:</span>
+            <span class="text-slate-600 dark:text-slate-400">Status Akun:</span>
             <x-status-badge :status="$user->is_active ? 'active' : 'inactive'" />
         </div>
     </div>

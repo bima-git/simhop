@@ -76,6 +76,7 @@
 
 > [!WARNING]
 > Pasangan Warna Gagal yang DILARANG:
+> - `slate-400` di atas latar putih (`bg-white`) = **2.56:1** (FAIL).
 > - `slate-500` di atas canvas `slate-100` = **4.34:1** (FAIL).
 > - `slate-500` di atas kartu `slate-800` = **3.07:1** (FAIL).
 > - Teks putih di atas `blue-500` (hover lama) = **3.68:1** (FAIL).

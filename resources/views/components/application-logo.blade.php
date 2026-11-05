@@ -34,6 +34,6 @@
     <!-- Official Typography -->
     <div class="flex flex-col text-left leading-none">
         <span class="font-bold tracking-tight text-slate-900 dark:text-white {{ $titleClass }}">SIMHOP</span>
-        <span class="{{ $subClass }} font-medium text-slate-500 dark:text-slate-400 tracking-wide mt-0.5">Monitoring & Handover</span>
+        <span class="{{ $subClass }} font-medium text-slate-600 dark:text-slate-400 tracking-wide mt-0.5">Monitoring & Handover</span>
     </div>
 </div>

@@ -5,13 +5,13 @@
                 <h2 class="text-xl font-bold leading-tight text-slate-900 dark:text-slate-100">
                     Tugas Saya
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                     Daftar seluruh tugas magang yang ditugaskan kepada Anda beserta status penyelesaiannya
                 </p>
             </div>
             <a href="{{ route('mahasiswa.dashboard') }}"
                class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
-                <svg class="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg class="w-4 h-4 text-slate-600 dark:text-slate-400" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
                 Kembali ke Dashboard
@@ -25,7 +25,7 @@
                 <div class="overflow-x-auto -mx-6 -my-4">
                     <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700/80 text-left text-sm">
                         <thead class="bg-slate-50/80 dark:bg-slate-800/50">
-                            <tr class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            <tr class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                                 <th scope="col" class="py-3 px-6">Judul Tugas</th>
                                 <th scope="col" class="py-3 px-6">Proyek</th>
                                 <th scope="col" class="py-3 px-6">Tenggat</th>
@@ -44,7 +44,7 @@
                                             </a>
                                         </div>
                                         @if ($task->description)
-                                            <p class="text-xs text-slate-500 dark:text-slate-400 font-normal mt-0.5 line-clamp-1 max-w-md">
+                                            <p class="text-xs text-slate-600 dark:text-slate-400 font-normal mt-0.5 line-clamp-1 max-w-md">
                                                 {{ $task->description }}
                                             </p>
                                         @endif
@@ -72,7 +72,7 @@
                                                 <span class="text-slate-600 dark:text-slate-300">{{ $task->due_date->format('d M Y') }}</span>
                                             @endif
                                         @else
-                                            <span class="text-slate-400">-</span>
+                                            <span class="text-slate-600 dark:text-slate-400">-</span>
                                         @endif
                                     </td>
                                     <td class="py-4 px-6 whitespace-nowrap">
@@ -95,7 +95,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="py-10 px-6 text-center text-slate-500 dark:text-slate-400">
+                                    <td colspan="6" class="py-10 px-6 text-center text-slate-600 dark:text-slate-400">
                                         Belum ada tugas yang ditugaskan kepada Anda.
                                     </td>
                                 </tr>
