@@ -116,3 +116,7 @@ Akun seeder (dev saja): `admin@example.com`, `coach@example.com` (Coach Uji), `c
 - Setiap perubahan tampilan harus tetap lolos `php artisan test`.
 - Jangan mengubah nama rute, nama field form, atau nama variabel yang dipakai controller.
 - Hasil desain yang dibuat harus dicek aksesibilitas dasar: kontras warna, label form, fokus keyboard.
+
+### Desain UI
+- Wajib membaca `design-system/simhop/MASTER.md` (dan `design-system/simhop/pages/<halaman>.md` bila ada) sebelum mengubah tampilan halaman apa pun.
+- Wajib menjalankan dan melaporkan hasil Pre-Delivery Checklist dari MASTER.md (visual, interaksi, mode gelap, mode terang, tata letak, aksesibilitas kontras min 4.5:1, responsif ponsel ~390px, dan `php artisan test`) sebelum menyatakan sebuah halaman selesai.

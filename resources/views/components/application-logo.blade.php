@@ -1,11 +1,39 @@
-<div {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5']) }}>
-    <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600 text-white shadow-sm shrink-0">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-        </svg>
+@props([
+    'size' => 'default', // 'default' (10/40px), 'sm' (8/32px), 'lg' (12/48px)
+])
+
+@php
+    $svgSizes = [
+        'sm' => 'w-8 h-8',
+        'default' => 'w-10 h-10',
+        'lg' => 'w-12 h-12',
+    ];
+    $svgClass = $svgSizes[$size] ?? 'w-10 h-10';
+
+    $titleSizes = [
+        'sm' => 'text-base',
+        'default' => 'text-lg',
+        'lg' => 'text-2xl',
+    ];
+    $titleClass = $titleSizes[$size] ?? 'text-lg';
+
+    $subSizes = [
+        'sm' => 'text-[10px]',
+        'default' => 'text-[11px]',
+        'lg' => 'text-xs',
+    ];
+    $subClass = $subSizes[$size] ?? 'text-[11px]';
+@endphp
+
+<div {{ $attributes->merge(['class' => 'inline-flex items-center gap-3']) }}>
+    <!-- "The S-Hop Monogram" Icon from favicon.svg -->
+    <div class="flex items-center justify-center shrink-0">
+        <img src="{{ asset('favicon.svg') }}?v={{ file_exists(public_path('favicon.svg')) ? filemtime(public_path('favicon.svg')) : '2' }}" class="{{ $svgClass }} shrink-0 object-contain" alt="SIMHOP Logo">
     </div>
-    <div class="flex flex-col leading-none text-left">
-        <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">SIMHOP</span>
-        <span class="text-[10px] font-semibold tracking-wider uppercase text-blue-600 dark:text-blue-400">Magang PT Xcode</span>
+
+    <!-- Official Typography -->
+    <div class="flex flex-col text-left leading-none">
+        <span class="font-bold tracking-tight text-slate-900 dark:text-white {{ $titleClass }}">SIMHOP</span>
+        <span class="{{ $subClass }} font-medium text-slate-500 dark:text-slate-400 tracking-wide mt-0.5">Monitoring & Handover</span>
     </div>
 </div>

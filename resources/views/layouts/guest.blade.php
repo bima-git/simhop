@@ -7,6 +7,11 @@
 
         <title>{{ config('app.name', 'SIMHOP') }}</title>
 
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}?v={{ file_exists(public_path('favicon.svg')) ? filemtime(public_path('favicon.svg')) : '2' }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}?v={{ file_exists(public_path('favicon.png')) ? filemtime(public_path('favicon.png')) : '2' }}">
+        <link rel="alternate icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : '2' }}">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
@@ -18,15 +23,10 @@
         <div class="w-full sm:max-w-md flex flex-col items-center">
             <!-- Brand Header -->
             <div class="text-center mb-6">
-                <a href="/" class="inline-flex items-center gap-3 group">
-                    <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-blue-600 text-white shadow-sm group-hover:bg-blue-700 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                        </svg>
-                    </div>
-                    <span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">SIMHOP</span>
+                <a href="/" class="inline-flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1 transition">
+                    <x-application-logo size="lg" class="justify-center" />
                 </a>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-3 font-medium">
                     Portal Monitoring & Handover Proyek Magang &bull; Studi Kasus PT Xcode Indonesia
                 </p>
             </div>
@@ -37,7 +37,7 @@
             </div>
 
             <!-- Academic Footer -->
-            <div class="mt-6 text-center text-xs text-slate-400 dark:text-slate-500">
+            <div class="mt-6 text-center text-xs text-slate-600 dark:text-slate-400 font-medium">
                 Tugas Akhir D3 Teknik Informatika &bull; Politeknik Negeri Cilacap
             </div>
         </div>

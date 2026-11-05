@@ -22,6 +22,17 @@ class CoachProjectTest extends TestCase
         $this->actingAs($coach)
             ->get(route('coach.projects.create'))
             ->assertOk();
+
+        $project = Project::create([
+            'name' => 'Proyek Detail Test',
+            'created_by' => $coach->id,
+            'status' => 'active',
+        ]);
+
+        $this->actingAs($coach)
+            ->get(route('coach.projects.show', $project))
+            ->assertOk()
+            ->assertSee('Proyek Detail Test');
     }
 
     public function test_coach_can_create_project_with_valid_data(): void

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+        <h2 class="text-xl font-semibold leading-tight text-slate-800 dark:text-slate-100">
             Review Video Dokumentasi
         </h2>
     </x-slot>
@@ -8,40 +8,40 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
             @if (session('status'))
-                <div class="rounded-md bg-green-100 p-4 text-sm text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                <div class="rounded-lg bg-emerald-100 p-4 text-sm font-medium text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300">
                     {{ session('status') }}
                 </div>
             @endif
 
             <!-- Tab Filter Status -->
-            <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-3 dark:border-gray-700">
+            <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-3 dark:border-slate-700">
                 <a href="{{ route('coach.videos.index', ['status' => 'pending']) }}"
-                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'pending' ? 'bg-amber-100 text-amber-800 font-semibold dark:bg-amber-900/60 dark:text-amber-200' : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800' }}">
+                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'pending' ? 'bg-amber-100 text-amber-900 font-semibold dark:bg-amber-900/60 dark:text-amber-200' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200' }}">
                     <span>⏳ Menunggu Review</span>
                     <span class="rounded-full bg-amber-200 px-2 py-0.5 text-xs text-amber-900 dark:bg-amber-800 dark:text-amber-100">{{ $counts['pending'] }}</span>
                 </a>
                 <a href="{{ route('coach.videos.index', ['status' => 'revision']) }}"
-                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'revision' ? 'bg-orange-100 text-orange-800 font-semibold dark:bg-orange-900/60 dark:text-orange-200' : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800' }}">
+                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'revision' ? 'bg-orange-100 text-orange-900 font-semibold dark:bg-orange-900/60 dark:text-orange-200' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200' }}">
                     <span>⚠️ Perlu Revisi</span>
                     <span class="rounded-full bg-orange-200 px-2 py-0.5 text-xs text-orange-900 dark:bg-orange-800 dark:text-orange-100">{{ $counts['revision'] }}</span>
                 </a>
                 <a href="{{ route('coach.videos.index', ['status' => 'approved']) }}"
-                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'approved' ? 'bg-green-100 text-green-800 font-semibold dark:bg-green-900/60 dark:text-green-200' : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800' }}">
+                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'approved' ? 'bg-emerald-100 text-emerald-900 font-semibold dark:bg-emerald-900/60 dark:text-emerald-200' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200' }}">
                     <span>✅ Disetujui</span>
-                    <span class="rounded-full bg-green-200 px-2 py-0.5 text-xs text-green-900 dark:bg-green-800 dark:text-green-100">{{ $counts['approved'] }}</span>
+                    <span class="rounded-full bg-emerald-200 px-2 py-0.5 text-xs text-emerald-900 dark:bg-emerald-800 dark:text-emerald-100">{{ $counts['approved'] }}</span>
                 </a>
                 <a href="{{ route('coach.videos.index', ['status' => 'all']) }}"
-                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'all' ? 'bg-gray-200 text-gray-800 font-semibold dark:bg-gray-700 dark:text-gray-200' : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800' }}">
+                   class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition {{ $status === 'all' ? 'bg-slate-200 text-slate-900 font-semibold dark:bg-slate-700 dark:text-slate-100' : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200' }}">
                     <span>Semua Video</span>
                 </a>
             </div>
 
             <!-- Tabel Antrean Video -->
-            <div class="bg-white p-6 shadow-sm sm:rounded-lg dark:bg-gray-800 dark:text-gray-100">
+            <div class="rounded-xl border border-slate-200/80 bg-white p-6 shadow-xs dark:border-slate-700/80 dark:bg-slate-800 dark:text-slate-100">
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 text-left text-sm dark:divide-gray-700">
+                    <table class="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-700">
                         <thead>
-                            <tr class="text-xs uppercase text-gray-500 dark:text-gray-400">
+                            <tr class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
                                 <th class="py-3 px-4">Judul Video</th>
                                 <th class="py-3 px-4">Mahasiswa</th>
                                 <th class="py-3 px-4">Tugas / Proyek</th>
@@ -51,27 +51,27 @@
                                 <th class="py-3 px-4 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
                             @forelse ($videos as $video)
-                                <tr>
-                                    <td class="py-3 px-4 font-medium">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
+                                    <td class="py-3 px-4 font-medium text-slate-900 dark:text-slate-100">
                                         {{ $video->title }}
                                         @if ($video->description)
-                                            <p class="text-xs text-gray-500 dark:text-gray-400 font-normal mt-0.5 line-clamp-1">{{ $video->description }}</p>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400 font-normal mt-0.5 line-clamp-1">{{ $video->description }}</p>
                                         @endif
                                     </td>
-                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-300">
-                                        <p class="font-medium text-gray-900 dark:text-gray-100">{{ $video->user ? $video->user->name : '-' }}</p>
-                                        <p class="text-xs text-gray-400">{{ $video->user ? ($video->user->nim ?? $video->user->email) : '' }}</p>
+                                    <td class="py-3 px-4 text-slate-600 dark:text-slate-300">
+                                        <p class="font-medium text-slate-900 dark:text-slate-100">{{ $video->user ? $video->user->name : '-' }}</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400">{{ $video->user ? ($video->user->nim ?? $video->user->email) : '' }}</p>
                                     </td>
-                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-300">
-                                        <p class="font-medium">{{ $video->task ? $video->task->title : '-' }}</p>
-                                        <p class="text-xs text-gray-400">{{ $video->task && $video->task->project ? $video->task->project->name : '-' }}</p>
+                                    <td class="py-3 px-4 text-slate-600 dark:text-slate-300">
+                                        <p class="font-medium text-slate-900 dark:text-slate-100">{{ $video->task ? $video->task->title : '-' }}</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400">{{ $video->task && $video->task->project ? $video->task->project->name : '-' }}</p>
                                     </td>
-                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-300 capitalize text-xs">
+                                    <td class="py-3 px-4 text-slate-600 dark:text-slate-300 capitalize text-xs">
                                         {{ str_replace('_', ' ', $video->platform?->value ?? '-') }}
                                     </td>
-                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-300 text-xs">
+                                    <td class="py-3 px-4 text-slate-600 dark:text-slate-300 text-xs">
                                         {{ $video->created_at->format('d M Y H:i') }} WIB
                                     </td>
                                     <td class="py-3 px-4">
@@ -79,14 +79,14 @@
                                     </td>
                                     <td class="py-3 px-4 text-right">
                                         <a href="{{ route('coach.videos.show', $video) }}"
-                                           class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500">
+                                           class="inline-flex items-center rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
                                             Review Video →
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="py-8 px-4 text-center text-gray-500 dark:text-gray-400">
+                                    <td colspan="7" class="py-8 px-4 text-center text-slate-500 dark:text-slate-400">
                                         @if ($status === 'pending')
                                             Tidak ada video yang sedang menunggu review saat ini.
                                         @else
@@ -100,7 +100,7 @@
                 </div>
 
                 @if ($videos->hasPages())
-                    <div class="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+                    <div class="mt-4 border-t border-slate-200 pt-4 dark:border-slate-700">
                         {{ $videos->links() }}
                     </div>
                 @endif

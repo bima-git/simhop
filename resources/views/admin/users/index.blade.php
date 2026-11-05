@@ -1,54 +1,55 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                Manajemen Pengguna
-            </h2>
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+                <h2 class="text-xl font-bold leading-tight text-slate-900 dark:text-slate-100">
+                    Manajemen Pengguna
+                </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    Kelola seluruh data pengguna, penetapan peran, dan status akun sistem
+                </p>
+            </div>
             <a href="{{ route('admin.users.create') }}"
-               class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500">
-                + Tambah Pengguna Baru
+               class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.765z" />
+                </svg>
+                Tambah Pengguna Baru
             </a>
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-8">
         <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
-            @if (session('status'))
-                <div class="rounded-md bg-green-100 p-4 text-sm text-green-800 dark:bg-green-900/50 dark:text-green-300">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            @if (session('error'))
-                <div class="rounded-md bg-red-100 p-4 text-sm text-red-800 dark:bg-red-900/50 dark:text-red-300">
-                    {{ session('error') }}
-                </div>
-            @endif
-
             <!-- Filter & Pencarian -->
-            <div class="bg-white p-6 shadow-sm sm:rounded-lg dark:bg-gray-800 dark:text-gray-100">
+            <x-card>
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <!-- Tab Filter Role -->
-                    <div class="flex flex-wrap gap-2 text-sm">
+                    <div class="flex flex-wrap items-center gap-1.5 text-xs">
                         <a href="{{ route('admin.users.index') }}"
-                           class="rounded-lg px-3 py-1.5 transition {{ !request('role') && !request('status') ? 'bg-indigo-600 text-white font-semibold' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300' }}">
-                            Semua ({{ $counts['total'] }})
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ !request('role') && !request('status') ? 'bg-blue-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700' }}">
+                            Semua
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ !request('role') && !request('status') ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300' }}">{{ $counts['total'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['role' => 'admin']) }}"
-                           class="rounded-lg px-3 py-1.5 transition {{ request('role') === 'admin' ? 'bg-blue-600 text-white font-semibold' : 'bg-blue-50 text-blue-700 hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300' }}">
-                            Admin ({{ $counts['admin'] }})
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'admin' ? 'bg-purple-600 text-white shadow-sm' : 'bg-purple-50 text-purple-700 hover:bg-purple-100 dark:bg-purple-950/40 dark:text-purple-300 dark:hover:bg-purple-900/60' }}">
+                            Admin
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'admin' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' }}">{{ $counts['admin'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['role' => 'coach']) }}"
-                           class="rounded-lg px-3 py-1.5 transition {{ request('role') === 'coach' ? 'bg-purple-600 text-white font-semibold' : 'bg-purple-50 text-purple-700 hover:bg-purple-100 dark:bg-purple-950/40 dark:text-purple-300' }}">
-                            Coach ({{ $counts['coach'] }})
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'coach' ? 'bg-blue-600 text-white shadow-sm' : 'bg-blue-50 text-blue-700 hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/60' }}">
+                            Coach
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'coach' ? 'bg-blue-700 text-white' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' }}">{{ $counts['coach'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['role' => 'mahasiswa']) }}"
-                           class="rounded-lg px-3 py-1.5 transition {{ request('role') === 'mahasiswa' ? 'bg-emerald-600 text-white font-semibold' : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300' }}">
-                            Mahasiswa ({{ $counts['mahasiswa'] }})
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'mahasiswa' ? 'bg-teal-600 text-white shadow-sm' : 'bg-teal-50 text-teal-700 hover:bg-teal-100 dark:bg-teal-950/40 dark:text-teal-300 dark:hover:bg-teal-900/60' }}">
+                            Mahasiswa
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'mahasiswa' ? 'bg-teal-700 text-white' : 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200' }}">{{ $counts['mahasiswa'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['status' => 'inactive']) }}"
-                           class="rounded-lg px-3 py-1.5 transition {{ request('status') === 'inactive' ? 'bg-amber-600 text-white font-semibold' : 'bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-950/40 dark:text-amber-300' }}">
-                            Nonaktif ({{ $counts['inactive'] }})
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('status') === 'inactive' ? 'bg-rose-600 text-white shadow-sm' : 'bg-rose-50 text-rose-700 hover:bg-rose-100 dark:bg-rose-950/40 dark:text-rose-300 dark:hover:bg-rose-900/60' }}">
+                            Nonaktif
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('status') === 'inactive' ? 'bg-rose-700 text-white' : 'bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200' }}">{{ $counts['inactive'] }}</span>
                         </a>
                     </div>
 
@@ -60,59 +61,63 @@
                         @if (request('status'))
                             <input type="hidden" name="status" value="{{ request('status') }}">
                         @endif
-                        <x-text-input name="search" type="text" placeholder="Cari nama, email, NIM..."
-                                      value="{{ request('search') }}" class="text-sm w-full md:w-64" />
-                        <x-primary-button class="text-xs">Cari</x-primary-button>
+                        <div class="relative w-full md:w-64">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                </svg>
+                            </div>
+                            <x-text-input name="search" type="text" placeholder="Cari nama, email, NIM..."
+                                          value="{{ request('search') }}" class="pl-9 text-xs w-full py-1.5" />
+                        </div>
+                        <button type="submit" class="inline-flex items-center rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 transition">
+                            Cari
+                        </button>
                         @if (request('search') || request('role') || request('status'))
-                            <a href="{{ route('admin.users.index') }}" class="text-xs text-gray-500 hover:underline">Reset</a>
+                            <a href="{{ route('admin.users.index') }}" class="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:underline">Reset</a>
                         @endif
                     </form>
                 </div>
-            </div>
+            </x-card>
 
             <!-- Tabel Daftar Pengguna -->
-            <div class="bg-white p-6 shadow-sm sm:rounded-lg dark:bg-gray-800 dark:text-gray-100">
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 text-left text-sm dark:divide-gray-700">
-                        <thead>
-                            <tr class="text-xs uppercase text-gray-500 dark:text-gray-400">
-                                <th class="py-3 px-4">Nama</th>
-                                <th class="py-3 px-4">Email</th>
-                                <th class="py-3 px-4">Peran (Role)</th>
-                                <th class="py-3 px-4">NIM</th>
-                                <th class="py-3 px-4">Status Akun</th>
-                                <th class="py-3 px-4 text-right">Aksi</th>
+            <x-card>
+                <div class="overflow-x-auto -mx-6 -my-4">
+                    <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700/80 text-left text-sm">
+                        <thead class="bg-slate-50/80 dark:bg-slate-800/50">
+                            <tr class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                                <th scope="col" class="py-3 px-6">Nama</th>
+                                <th scope="col" class="py-3 px-6">Email</th>
+                                <th scope="col" class="py-3 px-6">Peran (Role)</th>
+                                <th scope="col" class="py-3 px-6">NIM</th>
+                                <th scope="col" class="py-3 px-6">Status Akun</th>
+                                <th scope="col" class="py-3 px-6 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                             @forelse ($users as $user)
-                                <tr>
-                                    <td class="py-3 px-4 font-medium text-gray-900 dark:text-gray-100">
+                                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="py-3.5 px-6 font-medium text-slate-900 dark:text-slate-100 whitespace-nowrap">
                                         {{ $user->name }}
                                         @if ($user->id === auth()->id())
-                                            <span class="ml-1 text-xs text-indigo-600 dark:text-indigo-400 font-semibold">(Anda)</span>
+                                            <span class="ml-1.5 text-xs text-blue-600 dark:text-blue-400 font-semibold">(Anda)</span>
                                         @endif
                                     </td>
-                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-300">{{ $user->email }}</td>
-                                    <td class="py-3 px-4 capitalize">
-                                        <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold
-                                            {{ $user->role === 'admin' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : '' }}
-                                            {{ $user->role === 'coach' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' : '' }}
-                                            {{ $user->role === 'mahasiswa' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200' : '' }}">
-                                            {{ $user->role }}
-                                        </span>
+                                    <td class="py-3.5 px-6 font-mono text-xs text-slate-600 dark:text-slate-300 whitespace-nowrap">
+                                        {{ $user->email }}
                                     </td>
-                                    <td class="py-3 px-4 text-gray-600 dark:text-gray-300">{{ $user->nim ?? '-' }}</td>
-                                    <td class="py-3 px-4">
-                                        @if ($user->is_active)
-                                            <span class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:bg-green-900 dark:text-green-200">Aktif</span>
-                                        @else
-                                            <span class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-semibold text-red-800 dark:bg-red-900 dark:text-red-200">Nonaktif</span>
-                                        @endif
+                                    <td class="py-3.5 px-6 whitespace-nowrap">
+                                        <x-status-badge :status="$user->role" />
                                     </td>
-                                    <td class="py-3 px-4 text-right space-x-2">
+                                    <td class="py-3.5 px-6 font-mono text-xs text-slate-600 dark:text-slate-300 whitespace-nowrap">
+                                        {{ $user->nim ?? '-' }}
+                                    </td>
+                                    <td class="py-3.5 px-6 whitespace-nowrap">
+                                        <x-status-badge :status="$user->is_active ? 'active' : 'inactive'" />
+                                    </td>
+                                    <td class="py-3.5 px-6 text-right whitespace-nowrap space-x-2">
                                         <a href="{{ route('admin.users.edit', $user) }}"
-                                           class="text-indigo-600 hover:underline dark:text-indigo-400 font-medium">
+                                           class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
                                             Edit
                                         </a>
 
@@ -122,7 +127,7 @@
                                                 @method('PATCH')
                                                 <button type="submit"
                                                         onclick="return confirm('Apakah Anda yakin ingin {{ $user->is_active ? 'menonaktifkan' : 'mengaktifkan' }} akun {{ $user->name }}?')"
-                                                        class="text-xs font-semibold {{ $user->is_active ? 'text-amber-600 hover:underline dark:text-amber-400' : 'text-green-600 hover:underline dark:text-green-400' }}">
+                                                        class="inline-flex items-center rounded px-2 py-0.5 text-xs font-semibold transition border {{ $user->is_active ? 'text-amber-700 bg-amber-50 border-amber-200 hover:bg-amber-100 dark:text-amber-300 dark:bg-amber-950/50 dark:border-amber-800' : 'text-emerald-700 bg-emerald-50 border-emerald-200 hover:bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-950/50 dark:border-emerald-800' }}">
                                                     {{ $user->is_active ? 'Nonaktifkan' : 'Aktifkan' }}
                                                 </button>
                                             </form>
@@ -131,7 +136,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="py-8 px-4 text-center text-gray-500">
+                                    <td colspan="6" class="py-8 px-6 text-center text-slate-500 dark:text-slate-400">
                                         Tidak ada data pengguna yang sesuai dengan kriteria pencarian.
                                     </td>
                                 </tr>
@@ -141,11 +146,11 @@
                 </div>
 
                 @if ($users->hasPages())
-                    <div class="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+                    <x-slot name="footer">
                         {{ $users->links() }}
-                    </div>
+                    </x-slot>
                 @endif
-            </div>
+            </x-card>
         </div>
     </div>
 </x-app-layout>
