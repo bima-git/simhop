@@ -2,8 +2,9 @@
     <x-slot name="header">
         <div class="flex items-center gap-3">
             <a href="{{ route('admin.users.index') }}"
+               aria-label="Kembali ke daftar pengguna"
                class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg class="w-4 h-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
             </a>
@@ -65,7 +66,7 @@
                             </div>
                         @else
                             <select id="role" name="role" x-model="role"
-                                    class="mt-1 block w-full rounded-lg border-slate-300 shadow-xs text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
+                                    class="mt-1 block w-full rounded-lg border-slate-300 shadow-sm text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
                                 <option value="mahasiswa">Mahasiswa (Peserta Magang)</option>
                                 <option value="coach">Coach (Pembimbing)</option>
                                 <option value="admin">Admin (Administrator Sistem)</option>

@@ -37,19 +37,19 @@
                             <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'admin' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' }}">{{ $counts['admin'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['role' => 'coach']) }}"
-                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'coach' ? 'bg-blue-600 text-white shadow-sm' : 'bg-blue-50 text-blue-700 hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/60' }}">
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'coach' ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm' : 'bg-blue-50 text-blue-700 hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/60' }}">
                             Coach
                             <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'coach' ? 'bg-blue-700 text-white' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' }}">{{ $counts['coach'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['role' => 'mahasiswa']) }}"
-                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'mahasiswa' ? 'bg-teal-600 text-white shadow-sm' : 'bg-teal-50 text-teal-700 hover:bg-teal-100 dark:bg-teal-950/40 dark:text-teal-300 dark:hover:bg-teal-900/60' }}">
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'mahasiswa' ? 'bg-teal-700 hover:bg-teal-800 text-white shadow-sm' : 'bg-teal-50 text-teal-700 hover:bg-teal-100 dark:bg-teal-950/40 dark:text-teal-300 dark:hover:bg-teal-900/60' }}">
                             Mahasiswa
-                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'mahasiswa' ? 'bg-teal-700 text-white' : 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200' }}">{{ $counts['mahasiswa'] }}</span>
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'mahasiswa' ? 'bg-teal-800 text-white' : 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200' }}">{{ $counts['mahasiswa'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['status' => 'inactive']) }}"
-                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('status') === 'inactive' ? 'bg-rose-600 text-white shadow-sm' : 'bg-rose-50 text-rose-700 hover:bg-rose-100 dark:bg-rose-950/40 dark:text-rose-300 dark:hover:bg-rose-900/60' }}">
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('status') === 'inactive' ? 'bg-rose-700 hover:bg-rose-800 text-white shadow-sm' : 'bg-rose-50 text-rose-700 hover:bg-rose-100 dark:bg-rose-950/40 dark:text-rose-300 dark:hover:bg-rose-900/60' }}">
                             Nonaktif
-                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('status') === 'inactive' ? 'bg-rose-700 text-white' : 'bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200' }}">{{ $counts['inactive'] }}</span>
+                            <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('status') === 'inactive' ? 'bg-rose-800 text-white' : 'bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200' }}">{{ $counts['inactive'] }}</span>
                         </a>
                     </div>
 

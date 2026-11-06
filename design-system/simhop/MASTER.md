@@ -80,6 +80,10 @@
 > - `slate-500` di atas canvas `slate-100` = **4.34:1** (FAIL).
 > - `slate-500` di atas kartu `slate-800` = **3.07:1** (FAIL).
 > - Teks putih di atas `blue-500` (hover lama) = **3.68:1** (FAIL).
+> - Teks putih di atas `amber-600` = **3.19:1** (FAIL).
+> - Teks putih di atas `orange-600` = **3.92:1** (FAIL).
+> - Teks putih di atas `emerald-600` = **4.23:1** (FAIL).
+> - `text-blue-600` tanpa varian dark di atas permukaan gelap (`dark:bg-slate-800`) = **2.83:1** (FAIL). Wajib berpasangan: `text-blue-600 dark:text-blue-400`.
 
 ---
 
@@ -140,9 +144,24 @@
   - Kelas: `inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed`
 * **Tombol Sekunder (`x-secondary-button`)**:
   - Kelas: `inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 disabled:opacity-50`
+* **Tombol Solid Berwarna (Aksi Semantik & Antrean)**:
+  - Wajib menggunakan latar varian `-700` dengan hover `-800` bila menggunakan teks putih agar kontras ≥ 4.5:1:
+    - Amber (Antrean / Review): `bg-amber-700 hover:bg-amber-800 text-white shadow-sm` (5.12:1 - PASS).
+    - Orange (Revisi): `bg-orange-700 hover:bg-orange-800 text-white shadow-sm` (5.71:1 - PASS).
+    - Emerald (Persetujuan): `bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white shadow-sm` (6.00:1 - PASS).
+    - Rose (Bahaya / Nonaktif): `bg-rose-700 hover:bg-rose-800 text-white shadow-sm` (7.20:1 - PASS).
 * **Tombol Bahaya / Destruktif**:
   - Tindakan Ringan (Batal / Hapus baris tabel): `border border-rose-300 dark:border-rose-800 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors`.
-  - Konfirmasi Modal Permanen: `bg-rose-600 hover:bg-rose-700 active:bg-rose-800 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow-sm transition-colors focus:ring-rose-500`.
+  - Konfirmasi Modal Permanen: `bg-rose-700 hover:bg-rose-800 active:bg-rose-900 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow-sm transition-colors focus:ring-rose-500`.
+
+### 5. Aturan Aksesibilitas Elemen & Tautan
+* **Tombol / Link Hanya-Ikon**:
+  - Tombol hamburger menu wajib memiliki `:aria-expanded="open.toString()"`, `:aria-label="open ? 'Tutup menu navigasi' : 'Buka menu navigasi'"`, dan SVG di dalamnya wajib `aria-hidden="true"`.
+  - Seluruh tombol kembali (*back button* ikon panah) wajib memiliki `aria-label` deskriptif berbahasa Indonesia (contoh: `aria-label="Kembali ke daftar proyek"`).
+* **Tautan Berulang / Identik**:
+  - Tautan dengan teks yang sama pada baris/kartu yang berbeda (misal "Review Sekarang →", "Detail Proyek") wajib menyertakan `aria-label` kontekstual yang menyebutkan nama entitas (contoh: `aria-label="Review video {{ $video->title }}"`).
+* **Sintaks Shadow**:
+  - Di Tailwind CSS v3, gunakan `shadow-sm` (bukan `shadow-xs` atau `shadow-2xs` yang merupakan fitur v4).
 
 ### 5. Formulir (Label, Input, Select, Textarea)
 * **Label (`x-input-label`)**:

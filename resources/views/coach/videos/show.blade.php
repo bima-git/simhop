@@ -32,7 +32,7 @@
                 <div class="lg:col-span-2 space-y-6">
                     <!-- Video Player Card -->
                     <x-card>
-                        <div class="mb-5 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/80 bg-black aspect-video shadow-xs">
+                        <div class="mb-5 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/80 bg-black aspect-video shadow-sm">
                             <x-video-player :submission="$video" />
                         </div>
 
@@ -71,7 +71,7 @@
                                 @foreach ($video->revisions as $index => $rev)
                                     <div class="relative">
                                         <!-- Timeline node circle -->
-                                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full border-2 border-white dark:border-slate-800 bg-amber-500 shadow-xs"></div>
+                                        <div class="absolute -left-6 top-1 w-4 h-4 rounded-full border-2 border-white dark:border-slate-800 bg-amber-500 shadow-sm"></div>
 
                                         <div class="bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 rounded-xl p-4 space-y-2">
                                             <div class="flex items-center justify-between text-xs border-b border-amber-200/50 dark:border-amber-800/40 pb-2">
@@ -176,8 +176,8 @@
                                         @csrf
                                         <button type="submit"
                                                 onclick="return confirm('Apakah Anda yakin ingin menyetujui video dokumentasi ini? Status tugas akan otomatis selesai (Done 100%).')"
-                                                class="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                class="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition">
+                                            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                             </svg>
                                             Setujui Video Ini
@@ -208,8 +208,8 @@
 
                                         <button type="submit"
                                                 onclick="return confirm('Kirimkan catatan revisi ini ke mahasiswa?')"
-                                                class="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-amber-600 hover:bg-amber-700 active:bg-amber-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                class="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-amber-700 hover:bg-amber-800 active:bg-amber-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition">
+                                            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
                                             Minta Revisi

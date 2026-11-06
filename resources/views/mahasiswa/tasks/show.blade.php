@@ -127,7 +127,7 @@
             @if ($task->project && $task->project->handoverDocuments->isNotEmpty())
                 <x-card title="Dokumen Handover Proyek">
                     <x-slot:actions>
-                        <a href="{{ route('mahasiswa.projects.show', $task->project) }}" class="text-xs font-medium text-blue-600 hover:underline">
+                        <a href="{{ route('mahasiswa.projects.show', $task->project) }}" aria-label="Lihat semua dokumen handover proyek {{ $task->project->name }}" class="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">
                             Lihat Semua Dokumen &rarr;
                         </a>
                     </x-slot:actions>

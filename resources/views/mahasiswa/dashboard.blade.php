@@ -67,7 +67,7 @@
             <!-- Tugas Aktif -->
             <x-card title="Tugas Aktif" subtitle="Daftar tugas yang harus dikerjakan terurut berdasarkan tenggat waktu">
                 <x-slot:actions>
-                    <a href="{{ route('mahasiswa.tasks.index') }}" class="text-xs font-semibold text-blue-600 hover:underline">
+                    <a href="{{ route('mahasiswa.tasks.index') }}" aria-label="Lihat semua daftar tugas saya" class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">
                         Lihat Semua Tugas &rarr;
                     </a>
                 </x-slot:actions>
@@ -128,7 +128,7 @@
                                         </div>
                                     </td>
                                     <td class="py-3.5 px-4 text-right whitespace-nowrap">
-                                        <a href="{{ route('mahasiswa.tasks.show', $task) }}" class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:text-blue-300 rounded-lg border border-blue-200 dark:border-blue-800 transition">
+                                        <a href="{{ route('mahasiswa.tasks.show', $task) }}" aria-label="Detail dan update tugas {{ $task->title }}" class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:text-blue-300 rounded-lg border border-blue-200 dark:border-blue-800 transition">
                                             Detail & Update
                                         </a>
                                     </td>
@@ -169,12 +169,12 @@
 
                             <div class="mt-4 pt-3 border-t border-slate-200/80 dark:border-slate-700/60 flex items-center justify-between text-xs">
                                 <span class="inline-flex items-center gap-1.5 font-medium text-slate-600 dark:text-slate-400">
-                                    <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                     {{ $project->handover_documents_count }} Dokumen Handover
                                 </span>
-                                <a href="{{ route('mahasiswa.projects.show', $project) }}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 font-semibold flex items-center gap-1">
+                                <a href="{{ route('mahasiswa.projects.show', $project) }}" aria-label="Buka dokumen handover dan detail proyek {{ $project->name }}" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold flex items-center gap-1">
                                     Buka Dokumen Handover & Detail &rarr;
                                 </a>
                             </div>

@@ -87,7 +87,7 @@
                                     @csrf
                                     <div>
                                         <x-input-label for="user_id" value="Tambah Mahasiswa ke Proyek" class="text-xs font-semibold" />
-                                        <select id="user_id" name="user_id" class="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-900 text-xs shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                                        <select id="user_id" name="user_id" class="mt-1 block w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-900 text-xs shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                             @foreach ($students as $s)
                                                 <option value="{{ $s->id }}">{{ $s->name }} ({{ $s->nim ?? $s->email }})</option>
                                             @endforeach

@@ -11,8 +11,9 @@
             </div>
             <div class="flex items-center gap-3">
                 <a href="{{ route('coach.videos.index', ['status' => 'pending']) }}"
-                   class="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-amber-700 shadow-xs transition">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   aria-label="Antrean review video: {{ $pendingReviewCount }} video menunggu review"
+                   class="inline-flex items-center gap-2 rounded-lg bg-amber-700 px-3.5 py-2 text-xs font-semibold text-white hover:bg-amber-800 shadow-sm transition">
+                    <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
                     <span>Antrean Review</span>
@@ -21,8 +22,8 @@
                     @endif
                 </a>
                 <a href="{{ route('coach.projects.create') }}"
-                   class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-blue-700 shadow-xs transition">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-blue-700 shadow-sm transition">
+                    <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     + Buat Proyek
@@ -41,9 +42,10 @@
                     :description="$pendingReviewCount > 0 ? 'Memerlukan tindakan review Anda' : 'Tidak ada antrean pending'"
                     color="amber"
                     :href="route('coach.videos.index', ['status' => 'pending'])"
+                    aria-label="Antrean review: {{ $pendingReviewCount }} video menunggu review"
                 >
                     <x-slot:icon>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </x-slot:icon>
@@ -55,9 +57,10 @@
                     :description="$projectStats['active'] . ' aktif • ' . $projectStats['completed'] . ' selesai'"
                     color="blue"
                     :href="route('coach.projects.index')"
+                    aria-label="Proyek bimbingan: {{ $projectStats['total'] }} proyek total"
                 >
                     <x-slot:icon>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                         </svg>
                     </x-slot:icon>
@@ -70,7 +73,7 @@
                     color="emerald"
                 >
                     <x-slot:icon>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                         </svg>
                     </x-slot:icon>
@@ -83,7 +86,7 @@
                     color="purple"
                 >
                     <x-slot:icon>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </x-slot:icon>
@@ -93,7 +96,9 @@
             <!-- Bagian 1: Antrean Video yang Perlu Direview (Diprioritaskan di atas) -->
             <x-card title="Antrean Video Menunggu Review" subtitle="Daftar kiriman video dokumentasi terbaru dari mahasiswa yang memerlukan review Anda">
                 <x-slot:actions>
-                    <a href="{{ route('coach.videos.index', ['status' => 'pending']) }}" class="text-xs font-semibold text-blue-600 hover:underline flex items-center gap-1">
+                    <a href="{{ route('coach.videos.index', ['status' => 'pending']) }}"
+                       aria-label="Lihat semua antrean video dokumentasi"
+                       class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline flex items-center gap-1">
                         Lihat Semua Antrean &rarr;
                     </a>
                 </x-slot:actions>
@@ -131,8 +136,9 @@
                                     </td>
                                     <td class="py-3.5 px-4 text-right whitespace-nowrap">
                                         <a href="{{ route('coach.videos.show', $video) }}"
-                                           class="inline-flex items-center gap-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 px-3 py-1.5 text-xs font-semibold text-white shadow-2xs transition">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                           aria-label="Review video {{ $video->title }} oleh {{ $video->user ? $video->user->name : '-' }}"
+                                           class="inline-flex items-center gap-1.5 rounded-lg bg-amber-700 hover:bg-amber-800 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition">
+                                            <svg class="w-3.5 h-3.5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                             </svg>
@@ -143,8 +149,8 @@
                             @empty
                                 <tr>
                                     <td colspan="5" class="py-8 text-center text-xs text-slate-600 dark:text-slate-400">
-                                        <div class="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div class="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2" aria-hidden="true">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
@@ -160,9 +166,11 @@
             <!-- Bagian 2: Proyek Bimbingan Terbaru -->
             <x-card title="Proyek Bimbingan Terbaru" subtitle="Proyek aktif dan selesai yang Anda kelola">
                 <x-slot:actions>
-                    <a href="{{ route('coach.projects.index') }}" class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center gap-1">
+                    <a href="{{ route('coach.projects.index') }}"
+                       aria-label="Kelola semua proyek bimbingan magang"
+                       class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center gap-1">
                         <span>Kelola Semua Proyek</span>
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg class="w-4 h-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
                     </a>
@@ -170,11 +178,11 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                     @forelse ($recentProjects as $project)
-                        <div class="rounded-xl border border-slate-200/90 dark:border-slate-700/80 p-5 sm:p-6 bg-slate-50/70 dark:bg-slate-900/60 flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500/80 shadow-xs hover:shadow-md transition-all group">
+                        <div class="rounded-xl border border-slate-200/90 dark:border-slate-700/80 p-5 sm:p-6 bg-slate-50/70 dark:bg-slate-900/60 flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500/80 shadow-sm hover:shadow-md transition-all group">
                             <div>
                                 <div class="flex items-start justify-between gap-3 mb-3">
                                     <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center shrink-0">
-                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
                                         </svg>
                                     </div>
@@ -205,9 +213,11 @@
                                         {{ $project->tasks_count }} Tugas
                                     </span>
                                 </div>
-                                <a href="{{ route('coach.projects.show', $project) }}" class="inline-flex items-center gap-1 font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                                <a href="{{ route('coach.projects.show', $project) }}"
+                                   aria-label="Detail proyek {{ $project->name }}"
+                                   class="inline-flex items-center gap-1 font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
                                     <span>Detail Proyek</span>
-                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <svg class="w-4 h-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                                     </svg>
                                 </a>

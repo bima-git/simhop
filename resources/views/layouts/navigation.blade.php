@@ -5,7 +5,7 @@
             <div class="flex items-center gap-6">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg">
+                    <a href="{{ route('dashboard') }}" class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg" aria-label="Dashboard SIMHOP">
                         <x-application-logo />
                     </a>
                 </div>
@@ -82,8 +82,11 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <button @click="open = ! open"
+                        :aria-expanded="open.toString()"
+                        :aria-label="open ? 'Tutup menu navigasi' : 'Buka menu navigasi'"
+                        class="inline-flex items-center justify-center p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <svg class="h-6 w-6" aria-hidden="true" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>

@@ -43,7 +43,7 @@
                 <div class="mt-2 text-xs text-slate-600 dark:text-slate-400">
                     <p>
                         Alamat email Anda belum diverifikasi.
-                        <button form="send-verification" class="text-blue-600 hover:text-blue-700 underline font-medium focus:outline-none">
+                        <button form="send-verification" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline font-medium focus:outline-none">
                             Klik di sini untuk mengirim ulang email verifikasi.
                         </button>
                     </p>

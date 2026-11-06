@@ -23,7 +23,7 @@
         <div class="w-full sm:max-w-md flex flex-col items-center">
             <!-- Brand Header -->
             <div class="text-center mb-6">
-                <a href="/" class="inline-flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1 transition">
+                <a href="/" class="inline-flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1 transition" aria-label="Beranda SIMHOP">
                     <x-application-logo size="lg" class="justify-center" />
                 </a>
                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-3 font-medium">
