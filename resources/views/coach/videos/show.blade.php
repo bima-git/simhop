@@ -26,7 +26,7 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
                 <!-- Kolom Kiri: Player Video & Riwayat Revisi (2 kolom) -->
                 <div class="lg:col-span-2 space-y-6">

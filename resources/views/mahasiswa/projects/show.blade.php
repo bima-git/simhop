@@ -25,7 +25,7 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
             {{-- Info Ringkasan Proyek --}}
             <x-card>
                 <x-slot name="title">Deskripsi Proyek</x-slot>

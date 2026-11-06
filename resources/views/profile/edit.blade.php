@@ -13,7 +13,7 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="mx-auto max-w-4xl space-y-6 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
             <!-- Informasi Profil -->
             <x-card>
                 <x-slot name="title">Informasi Akun</x-slot>

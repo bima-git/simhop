@@ -20,8 +20,9 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="mx-auto max-w-2xl sm:px-6 lg:px-8">
-            <x-card>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <x-card>
                 <x-slot name="title">Perbarui Data Akun</x-slot>
                 <x-slot name="subtitle">Perubahan status atau hak akses akan langsung berdampak pada sesi login berikutnya</x-slot>
 
@@ -108,6 +109,7 @@
                     </div>
                 </form>
             </x-card>
+            </div>
         </div>
     </div>
 </x-app-layout>

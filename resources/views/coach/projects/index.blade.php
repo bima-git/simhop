@@ -20,7 +20,7 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-6 px-4 sm:px-6 lg:px-8">
             <x-card>
                 <div class="overflow-x-auto -mx-6 -my-4">
                     <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700/80 text-left text-sm">

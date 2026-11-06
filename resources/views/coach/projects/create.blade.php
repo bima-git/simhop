@@ -20,8 +20,9 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="mx-auto max-w-2xl sm:px-6 lg:px-8">
-            <x-card>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <x-card>
                 <x-slot name="title">Informasi Proyek Magang</x-slot>
                 <x-slot name="subtitle">Isi rincian nama, deskripsi, dan periode pelaksanaan proyek</x-slot>
 
@@ -67,6 +68,7 @@
                     </div>
                 </form>
             </x-card>
+            </div>
         </div>
     </div>
 </x-app-layout>
