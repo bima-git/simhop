@@ -30,7 +30,7 @@
             </label>
 
             @if (Route::has('password.request'))
-                <a class="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded" href="{{ route('password.request') }}">
+                <a class="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded" href="{{ route('password.request') }}">
                     {{ __('Lupa kata sandi?') }}
                 </a>
             @endif

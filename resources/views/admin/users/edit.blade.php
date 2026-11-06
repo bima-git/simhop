@@ -3,7 +3,7 @@
         <div class="flex items-center gap-3">
             <a href="{{ route('admin.users.index') }}"
                aria-label="Kembali ke daftar pengguna"
-               class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition">
+               class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition">
                 <svg class="w-4 h-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
@@ -12,7 +12,7 @@
                 <h2 class="text-xl font-bold leading-tight text-slate-900 dark:text-slate-100">
                     Edit Data Pengguna: {{ $user->name }}
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                     Perbarui profil, peran, atau reset kata sandi akun pengguna
                 </p>
             </div>
@@ -51,7 +51,7 @@
                         <x-input-label for="password" value="Kata Sandi Baru (Opsional)" />
                         <x-text-input id="password" name="password" type="password" class="mt-1 block w-full"
                                       placeholder="Kosongkan jika tidak ingin mengubah kata sandi" />
-                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Isi hanya bila ingin mereset kata sandi akun ini (minimal 8 karakter).</p>
+                        <p class="mt-1 text-xs text-slate-600 dark:text-slate-400">Isi hanya bila ingin mereset kata sandi akun ini (minimal 8 karakter).</p>
                         <x-input-error :messages="$errors->get('password')" class="mt-1.5" />
                     </div>
 
@@ -62,7 +62,7 @@
                             <input type="hidden" name="role" value="{{ $user->role }}">
                             <div class="mt-1 flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-600 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-400">
                                 <span class="font-medium capitalize">{{ $user->role }}</span>
-                                <span class="italic text-slate-500 dark:text-slate-400">(Tidak dapat mengubah peran akun sendiri)</span>
+                                <span class="italic text-slate-600 dark:text-slate-400">(Tidak dapat mengubah peran akun sendiri)</span>
                             </div>
                         @else
                             <select id="role" name="role" x-model="role"
@@ -88,7 +88,7 @@
                     <div class="pt-2">
                         @if ($user->id === auth()->id())
                             <input type="hidden" name="is_active" value="1">
-                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">Akun Anda sendiri selalu aktif dan tidak dapat dinonaktifkan.</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 italic">Akun Anda sendiri selalu aktif dan tidak dapat dinonaktifkan.</p>
                         @else
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" name="is_active" value="1"

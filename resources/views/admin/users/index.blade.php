@@ -5,13 +5,13 @@
                 <h2 class="text-xl font-bold leading-tight text-slate-900 dark:text-slate-100">
                     Manajemen Pengguna
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                     Kelola seluruh data pengguna, penetapan peran, dan status akun sistem
                 </p>
             </div>
             <a href="{{ route('admin.users.create') }}"
                class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg class="w-4 h-4" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.765z" />
                 </svg>
                 Tambah Pengguna Baru
@@ -32,7 +32,7 @@
                             <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ !request('role') && !request('status') ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300' }}">{{ $counts['total'] }}</span>
                         </a>
                         <a href="{{ route('admin.users.index', ['role' => 'admin']) }}"
-                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'admin' ? 'bg-purple-600 text-white shadow-sm' : 'bg-purple-50 text-purple-700 hover:bg-purple-100 dark:bg-purple-950/40 dark:text-purple-300 dark:hover:bg-purple-900/60' }}">
+                           class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 font-medium transition {{ request('role') === 'admin' ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-sm' : 'bg-purple-50 text-purple-700 hover:bg-purple-100 dark:bg-purple-950/40 dark:text-purple-300 dark:hover:bg-purple-900/60' }}">
                             Admin
                             <span class="rounded-full px-1.5 py-0.2 text-[10px] {{ request('role') === 'admin' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' }}">{{ $counts['admin'] }}</span>
                         </a>
@@ -63,7 +63,7 @@
                         @endif
                         <div class="relative w-full md:w-64">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <svg class="w-4 h-4 text-slate-400" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                                 </svg>
                             </div>
@@ -74,7 +74,7 @@
                             Cari
                         </button>
                         @if (request('search') || request('role') || request('status'))
-                            <a href="{{ route('admin.users.index') }}" class="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:underline">Reset</a>
+                            <a href="{{ route('admin.users.index') }}" class="text-xs text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 hover:underline">Reset</a>
                         @endif
                     </form>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="overflow-x-auto -mx-6 -my-4">
                     <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700/80 text-left text-sm">
                         <thead class="bg-slate-50/80 dark:bg-slate-800/50">
-                            <tr class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            <tr class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                                 <th scope="col" class="py-3 px-6">Nama</th>
                                 <th scope="col" class="py-3 px-6">Email</th>
                                 <th scope="col" class="py-3 px-6">Peran (Role)</th>
@@ -117,6 +117,7 @@
                                     </td>
                                     <td class="py-3.5 px-6 text-right whitespace-nowrap space-x-2">
                                         <a href="{{ route('admin.users.edit', $user) }}"
+                                           aria-label="Edit akun {{ $user->name }}"
                                            class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
                                             Edit
                                         </a>
@@ -136,7 +137,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="py-8 px-6 text-center text-slate-500 dark:text-slate-400">
+                                    <td colspan="6" class="py-8 px-6 text-center text-slate-600 dark:text-slate-400">
                                         Tidak ada data pengguna yang sesuai dengan kriteria pencarian.
                                     </td>
                                 </tr>

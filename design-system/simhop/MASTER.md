@@ -81,9 +81,9 @@
 > - `slate-500` di atas kartu `slate-800` = **3.07:1** (FAIL).
 > - Teks putih di atas `blue-500` (hover lama) = **3.68:1** (FAIL).
 > - Teks putih di atas `amber-600` = **3.19:1** (FAIL).
-> - Teks putih di atas `orange-600` = **3.92:1** (FAIL).
-> - Teks putih di atas `emerald-600` = **4.23:1** (FAIL).
-> - `text-blue-600` tanpa varian dark di atas permukaan gelap (`dark:bg-slate-800`) = **2.83:1** (FAIL). Wajib berpasangan: `text-blue-600 dark:text-blue-400`.
+> - Teks putih di atas `orange-600` = **3.56:1** (FAIL).
+> - Teks putih di atas `emerald-600` = **3.77:1** (FAIL).
+> - `text-blue-600` tanpa varian dark di atas permukaan gelap (`dark:bg-slate-800`) = **2.83:1** (FAIL). Wajib berpasangan: `text-blue-600 dark:text-blue-400` (5.75:1 - PASS).
 
 ---
 
@@ -146,10 +146,10 @@
   - Kelas: `inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 disabled:opacity-50`
 * **Tombol Solid Berwarna (Aksi Semantik & Antrean)**:
   - Wajib menggunakan latar varian `-700` dengan hover `-800` bila menggunakan teks putih agar kontras ≥ 4.5:1:
-    - Amber (Antrean / Review): `bg-amber-700 hover:bg-amber-800 text-white shadow-sm` (5.12:1 - PASS).
-    - Orange (Revisi): `bg-orange-700 hover:bg-orange-800 text-white shadow-sm` (5.71:1 - PASS).
-    - Emerald (Persetujuan): `bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white shadow-sm` (6.00:1 - PASS).
-    - Rose (Bahaya / Nonaktif): `bg-rose-700 hover:bg-rose-800 text-white shadow-sm` (7.20:1 - PASS).
+    - Amber (Antrean / Review): `bg-amber-700 hover:bg-amber-800 text-white shadow-sm` (5.02:1 - PASS, hover 7.09:1 - PASS).
+    - Orange (Revisi): `bg-orange-700 hover:bg-orange-800 text-white shadow-sm` (5.18:1 - PASS, hover 7.31:1 - PASS).
+    - Emerald (Persetujuan): `bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white shadow-sm` (5.48:1 - PASS, hover 7.68:1 - PASS).
+    - Rose (Bahaya / Nonaktif): `bg-rose-700 hover:bg-rose-800 text-white shadow-sm` (6.29:1 - PASS, hover 8.02:1 - PASS).
 * **Tombol Bahaya / Destruktif**:
   - Tindakan Ringan (Batal / Hapus baris tabel): `border border-rose-300 dark:border-rose-800 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors`.
   - Konfirmasi Modal Permanen: `bg-rose-700 hover:bg-rose-800 active:bg-rose-900 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow-sm transition-colors focus:ring-rose-500`.
