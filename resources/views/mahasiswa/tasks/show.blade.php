@@ -32,16 +32,19 @@
                 <div class="lg:col-span-2 space-y-6">
                     <!-- Bagian 1: Rincian Tugas -->
                     <x-card title="Rincian Tugas">
-                        <div class="space-y-4">
-                            <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-1">Deskripsi Tugas</span>
-                                <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
-                                    {{ $task->description ?: 'Tidak ada deskripsi rincian tugas.' }}
-                                </p>
-                            </div>
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-1">Deskripsi Tugas</span>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
+                                {{ $task->description ?: 'Tidak ada deskripsi rincian tugas.' }}
+                            </p>
+                        </div>
+                    </x-card>
 
-                            <!-- Progress Bar Saat Ini -->
-                            <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60">
+                    <!-- Bagian 2: Progres Pengerjaan -->
+                    <x-card title="Progres Pengerjaan" subtitle="Laporkan kemajuan tugas berkala kepada Coach">
+                        <div class="space-y-5">
+                            <!-- Progress Bar Saat Ini & Catatan Terakhir -->
+                            <div>
                                 <div class="flex items-center justify-between text-xs mb-1.5">
                                     <span class="font-medium text-slate-600 dark:text-slate-400">Progres Saat Ini</span>
                                     <span class="font-bold text-blue-600 dark:text-blue-400">{{ $task->progress }}%</span>
@@ -56,59 +59,60 @@
                                     </div>
                                 @endif
                             </div>
+
+                            @if ($task->status === \App\Models\Task::STATUS_DONE)
+                                <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60">
+                                    <div class="rounded-xl bg-emerald-50 dark:bg-emerald-950/40 p-4 border border-emerald-200 dark:border-emerald-800/70 text-emerald-900 dark:text-emerald-200 flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <div class="text-xs leading-relaxed">
+                                            <strong class="block font-semibold text-sm text-emerald-800 dark:text-emerald-300 mb-0.5">Tugas Telah Selesai (Done)</strong>
+                                            Tugas ini telah disetujui Coach (Status: Selesai). Anda tidak dapat mengubah status maupun persentase progres tugas ini lagi.
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60">
+                                    <form method="POST" action="{{ route('mahasiswa.tasks.progress', $task) }}" class="space-y-4">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <x-input-label for="status" value="Status Pengerjaan" class="text-xs font-semibold" />
+                                                <select id="status" name="status" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                    <option value="todo" @selected(old('status', $task->status) === 'todo')>Belum Dimulai (To Do)</option>
+                                                    <option value="in_progress" @selected(old('status', $task->status) === 'in_progress')>Sedang Dikerjakan (In Progress)</option>
+                                                </select>
+                                                <p class="mt-1 text-[11px] text-slate-600 dark:text-slate-400">Status <em>Selesai (Done)</em> hanya terjadi otomatis saat video dokumentasi disetujui Coach.</p>
+                                                <x-input-error :messages="$errors->get('status')" class="mt-1.5" />
+                                            </div>
+
+                                            <div>
+                                                <x-input-label for="progress" value="Persentase Progres (0 - 100%)" class="text-xs font-semibold" />
+                                                <x-text-input id="progress" name="progress" type="number" min="0" max="100" class="mt-1 block w-full text-sm dark:[color-scheme:dark]"
+                                                              :value="old('progress', $task->progress)" required />
+                                                <x-input-error :messages="$errors->get('progress')" class="mt-1.5" />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <x-input-label for="progress_note" value="Catatan Progres (Opsional)" class="text-xs font-semibold" />
+                                            <textarea id="progress_note" name="progress_note" rows="3" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                                      placeholder="Contoh: Sudah menyelesaikan implementasi rute dan pengujian database seeder...">{{ old('progress_note', $task->progress_note) }}</textarea>
+                                            <x-input-error :messages="$errors->get('progress_note')" class="mt-1.5" />
+                                        </div>
+
+                                        <div class="pt-1">
+                                            <x-primary-button>
+                                                Perbarui Progres
+                                            </x-primary-button>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
-                    </x-card>
-
-                    <!-- Bagian 2: Form Perbarui Progres Tugas -->
-                    <x-card title="Perbarui Progres Pengerjaan" subtitle="Laporkan kemajuan tugas berkala kepada Coach">
-                        @if ($task->status === \App\Models\Task::STATUS_DONE)
-                            <div class="rounded-xl bg-emerald-50 dark:bg-emerald-950/40 p-4 border border-emerald-200 dark:border-emerald-800/70 text-emerald-900 dark:text-emerald-200 flex items-start gap-3">
-                                <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                </svg>
-                                <div class="text-xs leading-relaxed">
-                                    <strong class="block font-semibold text-sm text-emerald-800 dark:text-emerald-300 mb-0.5">Tugas Telah Selesai (Done)</strong>
-                                    Tugas ini telah disetujui Coach (Status: Selesai / 100%). Anda tidak dapat mengubah status maupun persentase progres tugas ini lagi.
-                                </div>
-                            </div>
-                        @else
-                            <form method="POST" action="{{ route('mahasiswa.tasks.progress', $task) }}" class="space-y-4">
-                                @csrf
-                                @method('PATCH')
-
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <x-input-label for="status" value="Status Pengerjaan" class="text-xs font-semibold" />
-                                        <select id="status" name="status" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                            <option value="todo" @selected(old('status', $task->status) === 'todo')>Belum Dimulai (To Do)</option>
-                                            <option value="in_progress" @selected(old('status', $task->status) === 'in_progress')>Sedang Dikerjakan (In Progress)</option>
-                                        </select>
-                                        <p class="mt-1 text-[11px] text-slate-600 dark:text-slate-400">Status <em>Selesai (Done)</em> hanya terjadi otomatis saat video dokumentasi disetujui Coach.</p>
-                                        <x-input-error :messages="$errors->get('status')" class="mt-1.5" />
-                                    </div>
-
-                                    <div>
-                                        <x-input-label for="progress" value="Persentase Progres (0 - 100%)" class="text-xs font-semibold" />
-                                        <x-text-input id="progress" name="progress" type="number" min="0" max="100" class="mt-1 block w-full text-sm dark:[color-scheme:dark]"
-                                                      :value="old('progress', $task->progress)" required />
-                                        <x-input-error :messages="$errors->get('progress')" class="mt-1.5" />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <x-input-label for="progress_note" value="Catatan Progres (Opsional)" class="text-xs font-semibold" />
-                                    <textarea id="progress_note" name="progress_note" rows="3" class="mt-1 block w-full rounded-lg text-sm border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                              placeholder="Contoh: Sudah menyelesaikan implementasi rute dan pengujian database seeder...">{{ old('progress_note', $task->progress_note) }}</textarea>
-                                    <x-input-error :messages="$errors->get('progress_note')" class="mt-1.5" />
-                                </div>
-
-                                <div class="pt-1">
-                                    <x-primary-button>
-                                        Perbarui Progres
-                                    </x-primary-button>
-                                </div>
-                            </form>
-                        @endif
                     </x-card>
 
                     <!-- Bagian 3: Video Dokumentasi & Review -->
@@ -311,19 +315,9 @@
                             </div>
 
                             <div class="pb-3 border-b border-slate-100 dark:border-slate-700/60">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="text-slate-600 dark:text-slate-400 font-medium">Progres Tugas</span>
-                                    <span class="font-bold text-blue-600 dark:text-blue-400">{{ $task->progress }}%</span>
-                                </div>
-                                <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: {{ $task->progress }}%"></div>
-                                </div>
-                            </div>
-
-                            <div class="pb-3 border-b border-slate-100 dark:border-slate-700/60">
                                 <span class="text-slate-600 dark:text-slate-400 font-medium block mb-0.5">Proyek</span>
                                 @if ($task->project)
-                                    <a href="{{ route('mahasiswa.projects.show', $task->project) }}" class="font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition">
+                                    <a href="{{ route('mahasiswa.projects.show', [$task->project, 'from_task' => $task->id]) }}" class="font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition">
                                         {{ $task->project->name }}
                                     </a>
                                 @else
@@ -378,7 +372,7 @@
                     <x-card title="Dokumen Handover">
                         @if ($task->project)
                             <x-slot:actions>
-                                <a href="{{ route('mahasiswa.projects.show', $task->project) }}"
+                                <a href="{{ route('mahasiswa.projects.show', [$task->project, 'from_task' => $task->id]) }}"
                                    aria-label="Lihat semua dokumen handover proyek {{ $task->project->name }}"
                                    class="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">
                                     Lihat Semua &rarr;
@@ -423,7 +417,7 @@
                                                 </span>
                                                 <a href="{{ route('handover.download', $doc) }}"
                                                    aria-label="Unduh berkas {{ $doc->title }}"
-                                                   class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm shrink-0 transition">
+                                                   class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-md shadow-sm shrink-0 transition">
                                                     <svg class="w-3 h-3" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                                     </svg>
